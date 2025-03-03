@@ -5,6 +5,7 @@ import {assets } from "../../assets/assets";
 import { useApp } from '../../context/AppContext';
 import { currencyFormater } from '../../utils/helper';
 import { months } from '../../utils/constanst';
+import Spinner from "../../components/Spinner";
 
 const DoctorAppointments = () => {
    const {dToken,
@@ -25,7 +26,7 @@ const DoctorAppointments = () => {
       }
      }, [dToken]);
      if(isLoading){
-        return <p>Loading...</p>
+        return <Spinner/>
      }
   return (
      <div className='w-full max-w-6xl text-xs'>

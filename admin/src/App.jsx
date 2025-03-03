@@ -1,19 +1,18 @@
 import { Bounce,  ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Outlet } from 'react-router-dom';
-import Header from './pages/Header';
-import Main from './pages/Main';
-import SideBar from './pages/SideBar';
-import AppLayout from './UI/AppLayout';
+import { useApp } from './context/AppContext';
+import Spinner from './components/Spinner';
+
 
 const App = () => {
+ const {loading}= useApp();
+ if (loading) {
+   return <Spinner/>;
+ }
   return (
     <>
-    {/* // <AppLayout>
-    //   <Header />
-    //   <SideBar />
-    //   <Main />
-    // </AppLayout> */}
+
     <Outlet />
      <ToastContainer
         position='top-center'
