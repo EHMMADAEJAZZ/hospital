@@ -17,7 +17,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {setaToken}= useAdmin();
  const {setdToken}= useDoctor();
-const {isAuthenticated,setIsAuthenticated}= useApp();
+const {isAuthenticated,setIsAuthenticated,loading}= useApp();
   function validateUser(user) {
     const errors = {};
     if (!user.email) {
@@ -75,6 +75,9 @@ const {isAuthenticated,setIsAuthenticated}= useApp();
     }
     
   },[isAuthenticated])
+  if(loading){
+    return <p>Loading...</p>
+  }
   return (
     <CenterElements>
       <form

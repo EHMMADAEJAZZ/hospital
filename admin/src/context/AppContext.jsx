@@ -7,6 +7,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { dToken } = useDoctor();
   const { aToken } = useAdmin();
   const calculateAge = (dob) => {
@@ -21,6 +22,7 @@ export const AppProvider = ({ children }) => {
   };
   //check-admin auth
   const checkDoctor = async () => {
+    setLoading(true)
     try {
       const response = await doctorApis.checkAuth(dToken);
       if (response?.statusCode === 200) {
@@ -28,9 +30,12 @@ export const AppProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error?.message);
+    }finally {
+      setLoading(false)
     }
   };
   const checkAdmin = async () => {
+    setLoading(true)
     try {
       const response = await adminApis.checkAuth(aToken);
       if (response?.statusCode === 200) {
@@ -39,6 +44,8 @@ export const AppProvider = ({ children }) => {
     } catch (error) {
       console.log(error?.message);
       
+    }finally{
+      setLoading(false)
     }
   };
   useEffect(() => {
@@ -53,7 +60,7 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  const value = { calculateAge, isAuthenticated, setIsAuthenticated };
+  const value = { calculateAge, isAuthenticated, setIsAuthenticated,loading };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
