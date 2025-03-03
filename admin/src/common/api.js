@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const Axios = axios.create({
-  baseURL: 'https://hospital-api-murex.vercel.app/api/v1',
+  baseURL: 'https://hospital-api-wheat.vercel.app/api/v1',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
