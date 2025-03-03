@@ -4,11 +4,12 @@ import { appointmentEndPoints } from '../common/api';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { currencyFormater } from '../utils/helper';
+import Spinner from '../components/Spinner';
 
 const MyAppointments = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaying, setIsPaying] = useState(false);
-  const { patientAppointments, appointments, userToken, getAllDoctors } =
+  const { patientAppointments, appointments, userToken, getAllDoctors ,isLoading} =
     UseApp();
   const navigate = useNavigate();
   const months = [
@@ -102,7 +103,9 @@ const MyAppointments = () => {
   useEffect(() => {
     patientAppointments();
   }, []);
-
+if(isLoading){
+  return <Spinner/>
+}
   return (
     <div className='w-full'>
       <div className='my-6 w-full'>

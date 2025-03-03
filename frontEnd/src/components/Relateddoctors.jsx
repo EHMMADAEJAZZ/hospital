@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react';
 import Text from '../UI/Text';
 import { useNavigate } from 'react-router-dom';
 import { UseApp } from '../context/AppContext';
+import Spinner from './Spinner';
 
 const Relateddoctors = ({ speciality, docId }) => {
   const [relateDoc, setRelateDoc] = useState([]);
   const navigate = useNavigate();
- const {doctors}= UseApp();
+ const {doctors,isLoading}= UseApp();
 
   const fetchRelatedDocs = () => {
     // fetch related doctor data by docId
@@ -19,7 +20,7 @@ const Relateddoctors = ({ speciality, docId }) => {
   useEffect(() => {
     fetchRelatedDocs();
   }, [speciality, docId]);
-  console.log('relatedDocs: ', relateDoc);
+  if (isLoading) return <Spinner/>;
   return (
     <div className='my-20'>
       <div className='text-center my-5 gap-2 flex flex-col'>

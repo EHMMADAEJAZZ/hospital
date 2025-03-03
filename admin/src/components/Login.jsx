@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useAdmin } from '../context/AdminContext';
 import { useDoctor } from '../context/DoctorContext';
 import { useApp } from '../context/AppContext';
+import Spinner from './Spinner';
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -76,7 +77,7 @@ const {isAuthenticated,setIsAuthenticated,loading}= useApp();
     
   },[isAuthenticated])
   if(loading){
-    return <p>Loading...</p>
+    return <Spinner/>
   }
   return (
     <CenterElements>

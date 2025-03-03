@@ -4,11 +4,15 @@ import SubHeading from '../UI/SubHeading';
 import Text from '../UI/Text';
 // import { doctors } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
+import Spinner from './Spinner';
 const TopDoctors = () => {
   const navigate = useNavigate();
   //   const [page, setpage] = useState(1);
   //   const totalPages = Math.ceil(doctors.length / 10);
-  const {doctors}= UseApp();
+  const {doctors,isLoading}= UseApp();
+  if(isLoading){
+    return <Spinner/>
+  }
   return (
     <div className='flex flex-col items-center py-16 gap-4  '>
       <SubHeading className='capitalize text-center'>

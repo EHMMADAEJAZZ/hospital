@@ -3,14 +3,18 @@ import { assets } from '../assets/assets';
 import Button from '../UI/Button';
 import { useState } from 'react';
 import { UseApp } from '../context/AppContext';
+import Spinner from './Spinner';
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
- const{userToken,userDetails,logout} =UseApp()
+ const{userToken,userDetails,logout,isLoading} =UseApp()
   const handleLogout = () => {
     logout()
     navigate('/');
   };
+  if(isLoading){
+    return <Spinner/>
+  }
   return (
     <div className='flex items-center justify-between border-b border-gray-500 py-4 text-sm mb-5 px-2'>
       <div className='w-32 sm:w-44'>

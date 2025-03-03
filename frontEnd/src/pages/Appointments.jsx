@@ -9,6 +9,7 @@ import Relateddoctors from '../components/Relateddoctors';
 import { UseApp } from '../context/AppContext';
 import { toast } from 'react-toastify';
 import { appointmentEndPoints } from '../common/api';
+import Spinner from '../components/Spinner';
 
 const Appointments = () => {
   const { docId } = useParams();
@@ -17,7 +18,7 @@ const Appointments = () => {
   const [slotIndex, setSlotIndex] = useState(0);
   const [timeSlots, settimeSlots] = useState('');
   const weekDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-  const { doctors, userToken, getAllDoctors } = UseApp();
+  const { doctors, userToken, getAllDoctors,isLoading } = UseApp();
   // console.log(docId);
   const fetchDoctor = () => {
     // fetch doctor data by docId
@@ -119,7 +120,7 @@ const Appointments = () => {
   //   console.log(slots);
   // }, [slots]);
   // console.log(relateDoc);
-
+if(isLoading) return <Spinner/>
   return (
     docInfo && (
       <div className=''>

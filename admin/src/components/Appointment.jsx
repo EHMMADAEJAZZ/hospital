@@ -5,8 +5,9 @@ import {assets } from "../assets/assets";
 import { useApp } from '../context/AppContext';
 import { currencyFormater } from '../utils/helper';
 import { months } from '../utils/constanst';
+import Spinner from './Spinner';
 const Appointment = () => {
-const {appointments,allAppointments,aToken,handleCancelAppointment}=  useAdmin()
+const {appointments,allAppointments,aToken,handleCancelAppointment,isLoading}=  useAdmin()
 const {calculateAge}=useApp()
  
  
@@ -22,6 +23,9 @@ const {calculateAge}=useApp()
       allAppointments();
     }
   },[])
+  if(isLoading){
+    return <Spinner/>
+  }
   return (
     <div className='w-full max-w-6xl text-xs'>
       <p className='py-3 sm:text-start text-center text-xl font-medium text-gray-700 tracking-[2px]'>

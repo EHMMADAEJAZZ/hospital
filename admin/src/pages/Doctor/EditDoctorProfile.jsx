@@ -15,6 +15,7 @@ import {
 import TextArea from '../../UI/TextArea';
 import { doctorApis } from '../../common/api';
 import { toast } from 'react-toastify';
+import Spinner from '../../components/Spinner';
 const EditDoctorProfile = () => {
   const [error, setError] = useState({});
   const [image, setImage] = useState('');
@@ -211,7 +212,7 @@ const EditDoctorProfile = () => {
     };
  
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner/>
   }
   return (
     <div className='py-3 w-full min-h-[85vh] max-h-[85vh] overflow-hidden overflow-y-auto'>

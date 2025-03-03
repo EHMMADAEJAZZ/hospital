@@ -5,6 +5,7 @@ import { FaArrowsSpin } from 'react-icons/fa6';
 import { userEndPoints } from '../common/api';
 import { toast } from 'react-toastify';
 import { UseApp } from '../context/AppContext';
+import Spinner from '../components/Spinner';
 const Login = () => {
   const [isRegister, setisRegister] = useState(true);
   const [user, setUser] = useState({
@@ -15,7 +16,7 @@ const Login = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState({});
-  const {userToken,setUserToken,isAuthenticated, setIsAuthenticated}=UseApp()
+  const {userToken,setUserToken,isAuthenticated, setIsAuthenticated,isLoading:loading}=UseApp()
   const handleToggleRegister = () => {
     setisRegister(!isRegister);
     scrollTo(0, 0);
@@ -107,7 +108,10 @@ const Login = () => {
     if(userToken && isAuthenticated){
       window.location.href='/'
     }
-  },[userToken,isAuthenticated])
+  },[userToken,isAuthenticated]);
+  if(loading){
+    return <Spinner/>
+  }
   return (
     <CenterElements>
       <form

@@ -1,4 +1,5 @@
 import axios from "axios"
+// baseURL: 'https://hospital-api-wheat.vercel.app/api/v1',
 const Axios = axios.create({
   baseURL: 'https://hospital-api-wheat.vercel.app/api/v1',
   withCredentials: true,

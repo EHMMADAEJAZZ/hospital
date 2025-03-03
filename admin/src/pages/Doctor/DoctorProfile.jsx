@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDoctor } from "../../context/DoctorContext"
 import { currencyFormater, dateFormat, dateTimeFormat } from "../../utils/helper";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../../components/Spinner";
 
 const DoctorProfile = () => {
  const {dToken,getDoctorProfile,
@@ -12,7 +13,7 @@ const DoctorProfile = () => {
         getDoctorProfile();
       }
     }, [dToken]);
-    if(isLoading) return <div>Loading...</div>;
+    if(isLoading) return <Spinner/>;
   return doctorProfile && (
     <div className="py-3 w-full min-h-[85vh] max-h-[85vh] overflow-hidden overflow-y-auto">
       <div className="flex flex-col gap-4 mb-3">

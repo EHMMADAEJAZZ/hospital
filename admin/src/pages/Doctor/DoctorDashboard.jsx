@@ -3,6 +3,7 @@ import { assets } from "../../assets/assets";
 import { useDoctor } from "../../context/DoctorContext"
 import { months } from "../../utils/constanst";
 import { currencyFormater } from "../../utils/helper";
+import Spinner from "../../components/Spinner";
 
 const DoctorDashboard = () => {
  const { getDashboardData,
@@ -18,7 +19,7 @@ const DoctorDashboard = () => {
         getDashboardData();
       },[])
       if(isLoading){
-        return <p>Loading...</p>
+        return <Spinner/>
       }
   return dashboardData && (
    <div className='py-3 w-full min-h-[85vh] max-h-[85vh] overflow-hidden overflow-y-auto'>

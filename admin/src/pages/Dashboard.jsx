@@ -5,6 +5,7 @@ import { TfiFiles } from 'react-icons/tfi';
 import { assets } from '../assets/assets';
 import { useAdmin } from '../context/AdminContext';
 import { months } from '../utils/constanst';
+import Spinner from '../components/Spinner';
 const Dashboard = () => {
  const {dashboardData,
     getDashboardData,
@@ -20,6 +21,9 @@ const Dashboard = () => {
         getDashboardData();
       }
     },[])
+    if(isLoading){
+    return <Spinner/>
+  }
   return dashboardData && (
    <div className='py-3 w-full min-h-[85vh] max-h-[85vh] overflow-hidden overflow-y-auto'>
     <div className='flex flex-wrap gap-3'>

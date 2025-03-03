@@ -3,11 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Text from '../UI/Text';
 import { UseApp } from '../context/AppContext';
+import Spinner from '../components/Spinner';
 const Doctors = () => {
   const { speciality } = useParams();
   const [filterDoc, setFilterDoc] = useState([]);
   const [showFilterMenu, setShowFilterMenu] = useState(false);
-  const {doctors}= UseApp();
+  const {doctors,isLoading}= UseApp();
   // setFilterDoc(doctors);
   // console.log(speciality);
   const applyFilter = () => {
@@ -22,6 +23,9 @@ const Doctors = () => {
   }, [speciality, doctors]);
   const navigate = useNavigate();
   // console.log(showFilterMenu);
+  if(isLoading){
+    return <Spinner/>
+  }
   return (
     <div>
       <p className='text-sm capitalize font-medium leading-6'>

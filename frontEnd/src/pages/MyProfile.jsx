@@ -8,6 +8,7 @@ import { bloodTypes, genders } from '../utils/constants';
 import uploadImage from '../utils/uploadImgToCloudinary';
 import { userEndPoints } from '../common/api';
 import { toast } from 'react-toastify';
+import Spinner from '../components/Spinner';
 const MyProfile = () => {
   const { userDetails, userProfile, userToken, isLoading: loading } = UseApp();
   const [userData, setUserData] = useState({});
@@ -115,7 +116,7 @@ const MyProfile = () => {
     setUserData(userDetails);
   }, []);
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner/>
   }
   return (
     <div>
