@@ -103,7 +103,7 @@ const MyAppointments = () => {
   useEffect(() => {
     patientAppointments();
   }, []);
-if(isLoading){
+if(isLoading || isPaying){
   return <Spinner/>
 }
   return (
