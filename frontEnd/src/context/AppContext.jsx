@@ -108,10 +108,16 @@ export const AppProvider = ({ children }) => {
     logout,
   };
   useEffect(() => {
-    if (userToken) {
+     
       getAllDoctors();
-      userProfile();
-    }
+    
+  }, []);
+  useEffect(() => {
+     if(userToken){
+
+       userProfile();
+     }
+    
   }, [userToken]);
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 };
