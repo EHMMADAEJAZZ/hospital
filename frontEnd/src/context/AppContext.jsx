@@ -61,7 +61,7 @@ export const AppProvider = ({ children }) => {
       );
       if (response.success) {
         // setUserProfile(response?.data);
-        setAppointments(response?.data.reverse());
+        setAppointments(response?.data?.reverse());
       } else {
         toast.error(response?.message);
       }

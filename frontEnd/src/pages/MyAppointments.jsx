@@ -115,7 +115,7 @@ if(isLoading){
       </div>
       <hr className=' bg-gray-400' />
       <div className='w-full grid grid-cols-1 max-md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 mx-auto'>
-        {appointments &&
+        {appointments?.length > 0 ?
           appointments?.map((app, index) => (
             <div
               key={index}
@@ -207,7 +207,7 @@ if(isLoading){
               </div>
               <hr />
             </div>
-          ))}
+          )):<p>No Appointment Found</p>}
       </div>
     </div>
   );
