@@ -207,7 +207,7 @@ if(isLoading){
               </div>
               <hr />
             </div>
-          )):<p>No Appointment Found</p>}
+          )):<p className='flex items-center justify-center mt-5 text-white tracking-widest uppercase font-bold bg-black p-5 h-24'>No Appointment Found</p>}
       </div>
     </div>
   );
