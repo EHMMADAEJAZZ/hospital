@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAdmin } from '../context/AdminContext';
-import Loader from './Loader';
+import Spinner from './Spinner';
 // import { doctors } from '../assets/assets';
 const DoctorList = () => {
   const {doctors,isLoading,changeDoctorAvailability,allDoctors,aToken}= useAdmin();
