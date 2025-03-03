@@ -18,9 +18,8 @@ const TopDoctors = () => {
       <SubHeading className='capitalize text-center'>
         top doctors to Book
       </SubHeading>
-      <Text>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus,
-        fugit!
+      <Text className={`text-blue-500 sm:w-2/3`}>
+        Our hospital is proud to have some of the top doctors in the country. With years of experience and a commitment to excellence, our doctors provide world-class care to our patients.
       </Text>
       <div className='w-full  grid grid-cols-1 row-auto md:grid-cols-4 lg:grid-cols-5 gap-3 p-2 '>
         {doctors.slice(0, 10).map((person, index) => {

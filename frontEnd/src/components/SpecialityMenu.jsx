@@ -8,9 +8,8 @@ const SpecialityMenu = () => {
       <SubHeading className='capitalize text-center'>
         find by speciality
       </SubHeading>
-      <Text className='sm:w-1/3'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
-        dolore?
+      <Text className=' text-blue-500 sm:w-1/2'>
+        Find the right doctor for your needs. Browse our extensive directory of specialists, filter by speciality, and book an appointment that suits your schedule.
       </Text>
       <div className='flex sm:justify-center gap-4 pt-5 w-full overflow-scroll'>
         {specialityData.map((speciality, index) => (
