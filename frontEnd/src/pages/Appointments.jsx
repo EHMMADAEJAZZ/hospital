@@ -15,6 +15,7 @@ const Appointments = () => {
   const { docId } = useParams();
   const [docInfo, setDocInfo] = useState(null);
   const [slots, setSlots] = useState([]);
+  const [loading, setloading] = useState(false);
   const [slotIndex, setSlotIndex] = useState(0);
   const [timeSlots, settimeSlots] = useState('');
   const weekDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
@@ -93,6 +94,7 @@ const Appointments = () => {
         appointmentDate: slotbooked,
         appointmentTime: timeSlots,
       };
+      setloading(true);
       const res = await appointmentEndPoints.createAppointment(
         appointmentData,
         docId
@@ -105,8 +107,9 @@ const Appointments = () => {
         toast.error('Failed to Book Appointment');
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.message);
+    }finally{
+      setloading(false);
     }
   };
   useEffect(() => {
@@ -201,9 +204,9 @@ if(isLoading) return <Spinner/>
 
               <div className='w-44 mt-6 text-sm'>
                 <Button
-                  label='book an appointment'
+                  label={`${loading?"booking...":"book an appointment"}`}
                   onClick={bookAppointment}
-                  className={`text-sm font-light text-white`}
+                  className={`text-sm font-light text-white hover:bg-yellow-500 ${loading?"cursor-wait":"cursor-pointer"}`}
                 />
               </div>
             </div>

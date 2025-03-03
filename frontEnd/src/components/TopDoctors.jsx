@@ -55,7 +55,7 @@ const TopDoctors = () => {
       </p> */}
       <div className='mt-5'>
         <Button
-          className='w-40 mb-4'
+          className='w-40 mb-4 hover:bg-yellow-500 hover:text-white'
           label='show more...'
           onClick={() => {
             navigate('/doctors');
