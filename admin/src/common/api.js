@@ -1,7 +1,7 @@
 import axios from 'axios';
 // baseURL: 'https://hospital-api-wheat.vercel.app/api/v1',
 const Axios = axios.create({
-  baseURL: 'https://hospital-api-wheat.vercel.app/api/v1',
+ baseURL: 'https://hospital-api-wheat.vercel.app/api/v1',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ export const doctorApis = {
     
     try {
       const response = await Axios.put(
-        `${endPoints.doctor}/complete-appointment/${appointmentId}`,
+        `${endPoints.doctor}/complete-appointment/${appointmentId}`,{},
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -129,7 +129,7 @@ export const doctorApis = {
   cancelAppointment: async (appointmentId, token = '') => {
     try {
       const response = await Axios.put(
-        `${endPoints.doctor}/cancel-appointment/${appointmentId}`,
+        `${endPoints.doctor}/cancel-appointment/${appointmentId}`,{},
         {
           headers: {
             Authorization: `Bearer ${token}`,
